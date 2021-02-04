@@ -23,8 +23,8 @@ public class userSteps extends TestBase {
         } catch (Exception e) {
             e.getMessage();
         }
-        androidDriver.findElement(By.xpath("//android.widget.EditText[@text='Tài khoản']")).clear();
-        androidDriver.findElement(By.xpath("//android.widget.EditText[@text='Tài khoản']")).sendKeys(DataHelper.getCellData(1, 0, "userdata"));
+//        androidDriver.findElement(By.xpath("//android.widget.EditText[@text='Tài khoản']")).clear();
+//        androidDriver.findElement(By.xpath("//android.widget.EditText[@text='Tài khoản']")).sendKeys(DataHelper.getCellData(1, 0, "userdata"));
         androidDriver.findElement(By.xpath("//android.widget.EditText[@text='Mật khẩu']")).clear();
         byte[] decodeBytes = Base64.getDecoder().decode(DataHelper.getCellData(1, 5, "userdata").getBytes());
         androidDriver.findElement(By.xpath("//android.widget.EditText[@text='Mật khẩu']")).sendKeys(new String(decodeBytes));

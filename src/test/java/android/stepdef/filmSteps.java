@@ -11,13 +11,6 @@ public class filmSteps extends TestBase {
 
     @And("^I buy a film ticket at \"([^\"]*)\" cinema$")
     public void iBuyAFilmTicket(String cinema) throws Exception {
-//        try {
-//            if (androidDriver.findElement(By.xpath("//android.widget.Button[@index='1']")).isDisplayed()) {
-//                androidDriver.findElement(By.xpath("//android.widget.Button[@index='1']")).click();
-//            }
-//        } catch (Exception e) {
-//            e.getMessage();
-//        }
         waitElement(By.xpath("//android.widget.TextView[@text='" + cinema + "']"));
         androidDriver.findElement(By.xpath("//android.widget.TextView[@text='" + cinema + "']")).click();
         waitElement(By.xpath("//android.widget.TextView[@text='BHD Star Quang Trung']"));

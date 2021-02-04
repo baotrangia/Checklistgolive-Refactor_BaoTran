@@ -5,7 +5,6 @@ import android.utils.DataHelper;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
-
 import static org.testng.Assert.assertTrue;
 
 public class paymentTypeSteps extends TestBase {
@@ -18,9 +17,17 @@ public class paymentTypeSteps extends TestBase {
 
     @And("^I do transaction with type is \"([^\"]*)\" in Home page 2$")
     public void iDoTransactionWithTypeIsInHomePage2(String type) throws Exception {
-//        Thread.sleep(3000);
         waitElement(By.xpath("//android.widget.TextView[@text='Tài khoản']"));
-        swipeToLeft();
+        if (type.equals("Đặt vé máy bay") || type.equals("Đặt vé tàu") || type.equals("Đặt vé Xem phim")){
+            swipeToLeft();
+        }
+
+        else {
+            for (int i=0; i<2; i++){
+                swipeToLeft();
+                Thread.sleep(2000);
+            }
+        }
         waitElement(By.xpath("//android.widget.TextView[@text='" + type + "']"));
         androidDriver.findElement(By.xpath("//android.widget.TextView[@text='" + type + "']")).click();
     }
@@ -77,8 +84,6 @@ public class paymentTypeSteps extends TestBase {
         androidDriver.findElement(By.xpath("//android.widget.LinearLayout[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.TextView[@index='1']")).click();
         waitElement(By.xpath("//android.widget.TextView[@text='Chọn nhà cung cấp']"));
         scrollToUp();
-//        Thread.sleep(2000);
-//        scrollToUp();
         waitElement(By.xpath("//android.widget.TextView[@text='" + provider + "']"));
         androidDriver.findElement(By.xpath("//android.widget.TextView[@text='" + provider + "']")).click();
         androidDriver.findElement(By.xpath("//android.widget.EditText[@text='Mã khách hàng *']")).sendKeys(customerID);
